@@ -90,4 +90,4 @@ fix(wecom): align config keys with provider config map
 ## Licensing
 
 By contributing, you agree that your contributions will be licensed under the
-[Apache License 2.0](LICENSE) that covers this project.
+[Apache License 2.0](LICENCE) that covers this project.
