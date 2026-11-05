@@ -1,0 +1,9 @@
+[versions]
+keycloakVersion = "26.8.1"
+jacksonVersion = "2.18.2"
+
+[libraries]
+keycloak-core = { module = "org.keycloak:keycloak-server-spi", version.ref = "keycloakVersion" }
+keycloak-private = { module = "org.keycloak:keycloak-server-spi-private", version.ref = "keycloakVersion" }
+keycloak-services = { module = "org.keycloak:keycloak-services", version.ref = "keycloakVersion" }
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jacksonVersion" }
