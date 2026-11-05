@@ -1,3 +1,18 @@
+/*
+ * Copyright 2026 Onixbyte
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.onixbyte.keycloak.wecom;
 
 import jakarta.ws.rs.Consumes;
@@ -17,10 +32,16 @@ import org.keycloak.events.Errors;
 import org.keycloak.events.EventBuilder;
 import org.keycloak.events.EventType;
 import org.keycloak.models.KeycloakSession;
+import org.keycloak.models.RealmModel;
 import org.keycloak.services.ErrorPage;
 import org.keycloak.services.messages.Messages;
 import org.keycloak.sessions.AuthenticationSessionModel;
 
+/**
+ * JAX-RS sub-resource returned by {@link WeComIdentityProvider#callback(RealmModel, AuthenticationCallback, EventBuilder)}.
+ * RESTEasy matches GET requests on /realms/{realm}/broker/wecom/endpoint to
+ * {@link #authResponse(String, String, String, String)}.
+ */
 public class WeComEndpoint {
 
     private static final Logger LOG = Logger.getLogger(WeComEndpoint.class);

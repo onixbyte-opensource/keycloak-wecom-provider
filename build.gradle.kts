@@ -32,6 +32,9 @@ tasks.compileJava {
 
 tasks.jar {
     archiveBaseName = "keycloak-wecom-provider"
+    // Emit a checksum file in 'sha256sum -c' format: two spaces between the
+    // hash and the bare file name, so it verifies on Linux with
+    // `cd <dir> && sha256sum -c <file>.sha256`.
     doLast {
         val jarFile = archiveFile.get().asFile
         val digest = MessageDigest.getInstance("SHA-256")
