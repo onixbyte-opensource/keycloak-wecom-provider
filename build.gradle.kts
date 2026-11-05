@@ -1,3 +1,5 @@
+import java.security.MessageDigest
+
 plugins {
     java
 }
@@ -30,4 +32,18 @@ tasks.compileJava {
 
 tasks.jar {
     archiveBaseName = "keycloak-wecom-provider"
+    doLast {
+        val jarFile = archiveFile.get().asFile
+        val digest = MessageDigest.getInstance("SHA-256")
+        jarFile.inputStream().use { input ->
+            val buffer = ByteArray(8192)
+            while (true) {
+                val read = input.read(buffer)
+                if (read == -1) break
+                digest.update(buffer, 0, read)
+            }
+        }
+        val hash = digest.digest().joinToString("") { "%02x".format(it) }
+        File(jarFile.parentFile, "${jarFile.name}.sha256").writeText("$hash  ${jarFile.name}\n")
+    }
 }

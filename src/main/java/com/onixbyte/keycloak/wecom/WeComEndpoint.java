@@ -1,8 +1,11 @@
 package com.onixbyte.keycloak.wecom;
 
+import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import org.jboss.logging.Logger;
@@ -40,6 +43,8 @@ public class WeComEndpoint {
     }
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_FORM_URLENCODED, MediaType.APPLICATION_JSON})
     public Response authResponse(
             @QueryParam("state") String state,
             @QueryParam("code") String code,

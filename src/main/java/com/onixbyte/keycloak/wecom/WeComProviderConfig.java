@@ -6,6 +6,8 @@ import org.keycloak.models.IdentityProviderModel;
 public class WeComProviderConfig extends OAuth2IdentityProviderConfig {
 
     public static final String AGENT_ID = "agentId";
+    public static final String CORP_ID = "corpId";
+    public static final String SECRET = "secret";
 
     public WeComProviderConfig() {
         super();
@@ -16,7 +18,7 @@ public class WeComProviderConfig extends OAuth2IdentityProviderConfig {
     }
 
     public String getCorpId() {
-        return getClientId();
+        return getConfig().get(CORP_ID);
     }
 
     public String getAgentId() {
@@ -24,6 +26,6 @@ public class WeComProviderConfig extends OAuth2IdentityProviderConfig {
     }
 
     public String getSecret() {
-        return getClientSecret();
+        return getConfig().get(SECRET);
     }
 }
